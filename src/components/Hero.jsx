@@ -1,49 +1,40 @@
 import { motion } from "framer-motion";
-import { Rocket, Sparkles } from "lucide-react";
+import { Rocket } from "lucide-react";
 import GlassButton from "./GlassButton";
+import Spline from "@splinetool/react-spline";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Liquid glass blobs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-tr from-sky-300/50 to-blue-500/30 blur-3xl" />
-        <div className="absolute -bottom-24 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-indigo-300/50 to-purple-500/30 blur-3xl" />
+    <section className="relative">
+      {/* 3D Spline scene */}
+      <div className="relative h-[420px] w-full">
+        <Spline
+          scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode"
+          style={{ width: "100%", height: "100%" }}
+        />
+        {/* Subtle edge fade that does not block interactions */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
       </div>
 
-      {/* Content card */}
-      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-16">
+      {/* Textual content */}
+      <div className="mx-auto max-w-5xl px-6 py-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.6 }}
-          className="rounded-3xl border border-white/40 bg-white/30 p-10 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+          className="text-center"
         >
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/40 px-3 py-1 text-xs font-medium text-slate-700 backdrop-blur">
-              <Sparkles className="h-4 w-4 text-blue-600" />
-              Liquid-glass design system
-            </div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-              First Design Agent
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-slate-600">
-              Craft stunning interfaces with translucent glass panels, soft depth,
-              and delightful motion. Let the agent turn ideas into production-ready designs.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <GlassButton as="a" href="#workflow" icon={Rocket}>
-                Start Building
-              </GlassButton>
-              <a
-                href="#features"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-200/60 bg-white/60 px-5 py-3 text-slate-800 backdrop-blur-md shadow-sm hover:bg-white/80"
-              >
-                <Sparkles className="h-4 w-4 text-blue-600" />
-                Explore Features
-              </a>
-            </div>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            First Design Agency
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-700">
+            We craft interfaces that are clear, fast to ship, and thoughtfully animated. A focused partner from first idea to final handoff.
+          </p>
+          <div className="mt-8 flex items-center justify-center">
+            <GlassButton as="a" href="#workflow" icon={Rocket}>
+              Get Started
+            </GlassButton>
           </div>
         </motion.div>
       </div>
